@@ -37,10 +37,14 @@ public class PlayerController : MonoBehaviour
         float vert = Input.GetAxis(vertAxis);
         Vector3 moveDirection = new Vector3(horz, 0.0f, vert);
 
+        
         ThisBody.AddForce(moveDirection.normalized * maxSpeed);            // normalized keeps the magnitude at 1 (unit vector).
         ThisBody.velocity = new Vector3(Mathf.Clamp(ThisBody.velocity.x, -maxSpeed, maxSpeed),
                                         Mathf.Clamp(ThisBody.velocity.y, -maxSpeed, maxSpeed),
                                         Mathf.Clamp(ThisBody.velocity.z, -maxSpeed, maxSpeed));
+        
+
+
 
         if (mouseLook)
         {
@@ -54,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (Input.GetButtonDown(FireAxis) && CanFire)
+        if (Input.GetButtonDown(FireAxis))
         {
             foreach (Transform T in TurretTransforms)
             {
